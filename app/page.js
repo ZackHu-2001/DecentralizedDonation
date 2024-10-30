@@ -14,7 +14,6 @@ import {
   Search,
   Plus
 } from 'lucide-react';
-import DataVisualization from '@/components/visualizations/impact-metrics';
 
 
 // lib/data/homePageData.js
