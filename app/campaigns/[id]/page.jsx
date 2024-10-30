@@ -1,11 +1,10 @@
 // app/campaigns/[id]/page.jsx
 import React from 'react';
-import { ethers } from 'ethers';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { DonationForm } from '@/components/campaigns/donation-form';
+import DonationForm from '@/components/campaigns/donation-form';
 import {
     Calendar,
     Target,
@@ -25,7 +24,7 @@ async function getCampaignDetails(id) {
             target: "10",
             deadline: new Date(2024, 11, 31),
             amountCollected: "4.5",
-            image: "/api/placeholder/800/400",
+            image: "/library.webp",
             isActive: true,
             donations: [
                 {

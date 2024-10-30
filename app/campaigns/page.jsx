@@ -3,7 +3,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ethers } from 'ethers';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -46,6 +45,60 @@ export default function CampaignsPage() {
             const mockCampaigns = [
                 {
                     id: 1,
+                    title: "Turkey Earthquake Recovery Fund",
+                    description: "Supporting immediate relief and reconstruction efforts for communities affected by the recent earthquake. Funds will provide temporary housing, medical supplies, and rebuilding assistance.",
+                    target: "500",
+                    amountCollected: "385.5",
+                    deadline: new Date(2024, 11, 15),
+                    image: "/turkey.webp",
+                    owner: "0x1234...5678",
+                    category: "Disaster Relief",
+                    location: "Turkey",
+                    impactStats: {
+                        familiesHelped: 250,
+                        housesRebuilt: 45,
+                        medicalAidProvided: 1200
+                    },
+                    isActive: true
+                },
+                {
+                    id: 2,
+                    title: "Flood Recovery - Southeast Asia",
+                    description: "Emergency assistance and infrastructure restoration for communities impacted by severe flooding. Focus on clean water access, sanitation, and rebuilding essential facilities.",
+                    target: "300",
+                    amountCollected: "218.3",
+                    deadline: new Date(2024, 10, 20),
+                    image: "/flood.webp",
+                    owner: "0x9876...4321",
+                    category: "Infrastructure",
+                    location: "Vietnam",
+                    impactStats: {
+                        peopleAssisted: 1500,
+                        waterSystemsRestored: 12,
+                        emergencyShelters: 35
+                    },
+                    isActive: true
+                },
+                {
+                    id: 3,
+                    title: "Wildfire Community Rebuild",
+                    description: "Supporting families who lost homes in recent wildfires. Funds support rebuilding homes, restoring local businesses, and implementing fire prevention measures.",
+                    target: "450",
+                    amountCollected: "289.7",
+                    deadline: new Date(2024, 12, 10),
+                    image: "/wildfire.webp",
+                    owner: "0x5432...8765",
+                    category: "Community Rebuild",
+                    location: "California, USA",
+                    impactStats: {
+                        homesRebuilt: 28,
+                        businessesRestored: 15,
+                        firebreaksCreated: 8
+                    },
+                    isActive: true
+                },
+                {
+                    id: 4,
                     title: "Education Support Program",
                     description: "Supporting education initiatives for underprivileged students.",
                     target: "20",
@@ -54,10 +107,10 @@ export default function CampaignsPage() {
                     image: "/api/placeholder/400/200",
                     owner: "0x1234...5678",
                     category: "education",
-                    isActive: true
+                    isActive: false
                 },
                 {
-                    id: 2,
+                    id: 5,
                     title: "Community Health Center",
                     description: "Building a health center for remote communities.",
                     target: "30",
@@ -66,7 +119,7 @@ export default function CampaignsPage() {
                     image: "/api/placeholder/400/200",
                     owner: "0x9876...4321",
                     category: "health",
-                    isActive: true
+                    isActive: false
                 },
                 // Add more mock campaigns...
             ];
@@ -85,7 +138,7 @@ export default function CampaignsPage() {
     const filteredCampaigns = campaigns.filter(campaign => {
         const matchesSearch = campaign.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             campaign.description.toLowerCase().includes(searchQuery.toLowerCase());
-        
+
         const matchesStatus = filters.status === 'all' ||
             (filters.status === 'active' && campaign.isActive) ||
             (filters.status === 'ended' && !campaign.isActive);
@@ -221,11 +274,6 @@ function CampaignCard({ campaign }) {
                     <div className="absolute top-2 right-2 bg-black/70 text-white px-2 py-1 rounded text-sm">
                         {daysLeft} days left
                     </div>
-                    {campaign.category && (
-                        <div className="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 rounded text-sm">
-                            {campaign.category}
-                        </div>
-                    )}
                 </div>
 
                 <CardContent className="p-4">

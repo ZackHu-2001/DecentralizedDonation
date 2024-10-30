@@ -81,7 +81,7 @@ export default function DonationPage({ params: paramsPromise }) {
                 throw new Error('Please install MetaMask to make donations');
             }
 
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const provider = new ethers.BrowserProvider(window.ethereum);
             await provider.send('eth_requestAccounts', []);
             const signer = provider.getSigner();
 
@@ -93,7 +93,7 @@ export default function DonationPage({ params: paramsPromise }) {
             );
 
             // Convert amount to Wei
-            const amountInWei = ethers.utils.parseEther(amount);
+            const amountInWei = ethers.parseEther(amount);
 
             // Send donation transaction
             const tx = await contract.donateToPersonal(

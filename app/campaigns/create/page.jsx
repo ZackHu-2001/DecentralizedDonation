@@ -83,7 +83,7 @@ export default function CreateCampaignPage() {
                 throw new Error('Please install MetaMask to create a campaign');
             }
 
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const provider = new ethers.BrowserProvider(window.ethereum);
             await provider.send('eth_requestAccounts', []);
             const signer = provider.getSigner();
 
@@ -95,7 +95,7 @@ export default function CreateCampaignPage() {
             );
 
             // Convert target to Wei
-            const targetInWei = ethers.utils.parseEther(formData.target);
+            const targetInWei = ethers.parseEther(formData.target);
 
             // Convert deadline to timestamp
             const deadlineTimestamp = Math.floor(new Date(formData.deadline).getTime() / 1000);
