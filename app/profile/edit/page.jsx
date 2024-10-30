@@ -97,7 +97,7 @@ export default function EditProfilePage() {
                             {/* Profile Image */}
                             <div className="space-y-2">
                                 <label className="block text-sm font-medium">Profile Image</label>
-                                <div className="border-2 border-dashed rounded-lg overflow-hidden">
+                                <div className="border-2 border-dashed rounded-lg overflow-hidden relative">
                                     {preview ? (
                                         <div className="relative">
                                             <img
@@ -119,28 +119,28 @@ export default function EditProfilePage() {
                                             </Button>
                                         </div>
                                     ) : (
-                                        <div className="p-8">
+                                        <div className="p-8 text-center">
+                                            <Upload className="mx-auto h-12 w-12 text-gray-400" />
+                                            <div className="mt-4">
+                                                <span className="text-sm font-medium text-gray-900">
+                                                    Upload a file
+                                                </span>
+                                            </div>
+                                            <p className="text-xs text-gray-500 mt-1">
+                                                PNG, JPG up to 10MB
+                                            </p>
                                             <input
                                                 type="file"
                                                 accept="image/*"
                                                 onChange={handleImageChange}
-                                                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                                className="opacity-0 absolute inset-0 w-full h-full cursor-pointer"
+                                                style={{ top: 'unset', bottom: 'unset', height: 'auto' }}
                                             />
-                                            <div className="text-center">
-                                                <Upload className="mx-auto h-12 w-12 text-gray-400" />
-                                                <div className="mt-4">
-                                                    <span className="text-sm font-medium text-gray-900">
-                                                        Upload a file
-                                                    </span>
-                                                </div>
-                                                <p className="text-xs text-gray-500 mt-1">
-                                                    PNG, JPG up to 10MB
-                                                </p>
-                                            </div>
                                         </div>
                                     )}
                                 </div>
                             </div>
+
 
                             {/* Name */}
                             <div className="space-y-2">
