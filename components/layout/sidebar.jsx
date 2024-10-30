@@ -8,6 +8,7 @@ import {
     Search,
     PlusCircle,
     Users,
+    User,
     TrendingUp,
     Settings,
     HelpCircle
@@ -42,6 +43,13 @@ export function Sidebar() {
                     <Button variant="ghost" className="w-full justify-start gap-2">
                         <Users className="w-4 h-4" />
                         Community
+                    </Button>
+                </Link>
+
+                <Link href="/profile/">
+                    <Button variant="ghost" className="w-full justify-start gap-2">
+                        <User className="w-4 h-4" />
+                        Profile
                     </Button>
                 </Link>
 
