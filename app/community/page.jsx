@@ -40,7 +40,7 @@ export default function CommunityPage() {
                         Our Community Page is Under Construction
                     </h1>
                     <p className="text-gray-600 text-lg mb-8">
-                        We're working hard to build an amazing community platform for our users.
+                        We&apos;re working hard to build an amazing community platform for our users.
                         Stay tuned for updates!
                     </p>
                 </div>

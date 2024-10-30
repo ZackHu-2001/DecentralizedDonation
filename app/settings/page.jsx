@@ -265,7 +265,7 @@ export default function SettingsPage() {
                                     <div className="space-y-0.5">
                                         <Label>Show Campaigns</Label>
                                         <div className="text-sm text-gray-500">
-                                            Display campaigns you've created
+                                            Display campaigns you&aposve created
                                         </div>
                                     </div>
                                     <Switch
