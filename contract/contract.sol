@@ -24,7 +24,7 @@ contract EnhancedDonationPlatform {
         uint256 totalReceived;
         address[] donors;
         uint256[] donations;
-        string[] messages;  // 捐赠者留言
+        string[] messages; 
     }
 
     mapping(uint256 => Campaign) public campaigns;
@@ -33,7 +33,6 @@ contract EnhancedDonationPlatform {
     
     uint256 public numberOfCampaigns = 0;
     
-    // 事件定义
     event ProfileCreated(address indexed user, string name);
     event PersonalDonationReceived(
         address indexed recipient,
@@ -53,7 +52,6 @@ contract EnhancedDonationPlatform {
         uint256 amount
     );
 
-    // 创建个人档案
     function createPersonalProfile(
         string memory _name,
         string memory _description,
@@ -73,7 +71,6 @@ contract EnhancedDonationPlatform {
         emit ProfileCreated(msg.sender, _name);
     }
 
-    // 更新个人档案
     function updateProfile(
         string memory _name,
         string memory _description,
@@ -89,7 +86,6 @@ contract EnhancedDonationPlatform {
         profile.acceptingDonations = _acceptingDonations;
     }
 
-    // 向个人进行捐赠
     function donateToPersonal(address payable _to, string memory _message) public payable {
         require(hasProfile[_to], "Recipient does not have a profile");
         require(personalProfiles[_to].acceptingDonations, "Recipient is not accepting donations");
@@ -107,7 +103,6 @@ contract EnhancedDonationPlatform {
         emit PersonalDonationReceived(_to, msg.sender, msg.value, _message);
     }
 
-    // 获取个人档案信息
     function getPersonalProfile(address _person) public view returns (
         string memory name,
         string memory description,
@@ -129,7 +124,6 @@ contract EnhancedDonationPlatform {
         );
     }
 
-    // 获取个人捐赠历史
     function getPersonalDonationHistory(address _person) public view returns (
         address[] memory donors,
         uint256[] memory amounts,
@@ -141,7 +135,6 @@ contract EnhancedDonationPlatform {
         return (profile.donors, profile.donations, profile.messages);
     }
 
-    // Campaign相关函数保持不变...
     function createCampaign(
         string memory _title,
         string memory _description,
