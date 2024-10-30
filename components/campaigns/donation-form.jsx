@@ -41,7 +41,7 @@ const DonationForm = ({ recipientAddress, recipientName }) => {
             );
 
             // 转换ETH金额为Wei
-            const amountInWei = ethers.utils.parseEther(amount);
+            const amountInWei = ethers.parseEther(amount);
 
             // 发送捐赠交易
             const tx = await contract.donateToPersonal(

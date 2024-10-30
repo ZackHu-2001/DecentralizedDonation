@@ -35,9 +35,8 @@ export function Navbar() {
                 return;
             }
 
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            await provider.send('eth_requestAccounts', []);
-            const signer = provider.getSigner();
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = await provider.getSigner();
             const address = await signer.getAddress();
             setAccount(address);
         } catch (error) {
@@ -62,7 +61,7 @@ export function Navbar() {
                         </Link>
 
                         {/* Desktop Navigation */}
-                        <div className="hidden md:flex items-center space-x-4 ml-10">
+                        {/* <div className="hidden md:flex items-center space-x-4 ml-10">
                             {navigationLinks.map((item) => {
                                 const Icon = item.icon;
                                 return (
@@ -79,7 +78,7 @@ export function Navbar() {
                                     </Link>
                                 );
                             })}
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Account and Wallet */}
