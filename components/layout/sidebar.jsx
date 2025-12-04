@@ -4,7 +4,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import {
     Home,
@@ -35,75 +34,44 @@ export function Sidebar() {
     const pathname = usePathname();
 
     return (
-        <motion.div
-            className="hidden lg:flex flex-col w-64 border-r bg-white/80 backdrop-blur-md h-screen sticky top-16 shadow-sm"
-            initial={{ x: -64, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-        >
+        <div className="hidden lg:flex flex-col w-64 border-r bg-white h-screen sticky top-16">
             <div className="p-4 space-y-1">
-                {navItems.map((item, index) => {
+                {navItems.map((item) => {
                     const Icon = item.icon;
                     const isActive = pathname === item.href;
 
                     return (
-                        <motion.div
-                            key={item.name}
-                            initial={{ x: -20, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ duration: 0.3, delay: index * 0.05 }}
-                        >
-                            <Link href={item.href}>
-                                <motion.div whileHover={{ x: 4 }} whileTap={{ scale: 0.98 }}>
-                                    <Button
-                                        variant={isActive ? 'default' : 'ghost'}
-                                        className={`w-full justify-start gap-3 transition-all ${
-                                            isActive
-                                                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
-                                                : 'hover:bg-gray-100 hover:text-blue-600'
-                                        }`}
-                                    >
-                                        <Icon className="w-4 h-4" />
-                                        <span className="font-medium">{item.name}</span>
-                                    </Button>
-                                </motion.div>
-                            </Link>
-                        </motion.div>
+                        <Link key={item.name} href={item.href}>
+                            <Button
+                                variant={isActive ? 'default' : 'ghost'}
+                                className="w-full justify-start gap-2"
+                            >
+                                <Icon className="w-4 h-4" />
+                                {item.name}
+                            </Button>
+                        </Link>
                     );
                 })}
 
                 <div className="border-t my-4" />
 
-                {settingsItems.map((item, index) => {
+                {settingsItems.map((item) => {
                     const Icon = item.icon;
                     const isActive = pathname === item.href;
 
                     return (
-                        <motion.div
-                            key={item.name}
-                            initial={{ x: -20, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ duration: 0.3, delay: (navItems.length + index) * 0.05 }}
-                        >
-                            <Link href={item.href}>
-                                <motion.div whileHover={{ x: 4 }} whileTap={{ scale: 0.98 }}>
-                                    <Button
-                                        variant={isActive ? 'default' : 'ghost'}
-                                        className={`w-full justify-start gap-3 transition-all ${
-                                            isActive
-                                                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
-                                                : 'hover:bg-gray-100 hover:text-blue-600'
-                                        }`}
-                                    >
-                                        <Icon className="w-4 h-4" />
-                                        <span className="font-medium">{item.name}</span>
-                                    </Button>
-                                </motion.div>
-                            </Link>
-                        </motion.div>
+                        <Link key={item.name} href={item.href}>
+                            <Button
+                                variant={isActive ? 'default' : 'ghost'}
+                                className="w-full justify-start gap-2"
+                            >
+                                <Icon className="w-4 h-4" />
+                                {item.name}
+                            </Button>
+                        </Link>
                     );
                 })}
             </div>
-        </motion.div>
+        </div>
     );
 }
